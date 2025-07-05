@@ -1,0 +1,15 @@
+[2025-07-04 08:15:43] INFO: User logged in from 192.168.1.10
+[2025-07-04 08:16:12] ERROR: Failed login from 192.168.1.11
+[2025-07-04 08:16:14] ERROR: Failed login from 192.168.1.11
+[2025-07-04 08:16:17] ERROR: Failed login from 192.168.1.11
+[2025-07-04 08:17:00] CRITICAL: Brute force attempt from 192.168.1.11
+[2025-07-04 08:20:01] INFO: File accessed by 192.168.1.12
+[2025-07-04 08:21:05] WARNING: Suspicious port scan from 10.0.0.2
+[2025-07-04 08:21:45] INFO: Service started from 192.168.1.13
+[2025-07-04 08:23:01] ERROR: Failed login from 172.16.0.5
+[2025-07-04 08:23:10] INFO: User logged out from 192.168.1.10
+[2025-07-04 08:24:55] CRITICAL: Malware pattern detected from 203.0.113.25
+[2025-07-04 08:25:10] WARNING: Repeated requests from 10.0.0.2
+[2025-07-04 08:26:32] INFO: Update check by 192.168.1.14
+[2025-07-04 08:27:41] ERROR: Failed login from 192.168.1.14
+[2025-07-04 08:28:19] CRITICAL: Unauthorized access attempt from 172.16.0.8
