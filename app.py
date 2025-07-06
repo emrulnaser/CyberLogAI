@@ -1,5 +1,10 @@
+
 from flask import Flask, request
 from policy import check_gdpr_compliance
+import PyPDF2
+import csv
+import io
+import os
 
 app = Flask(__name__)
 
@@ -15,8 +20,30 @@ def home():
 
 @app.route("/scan", methods=["POST"])
 def scan():
-    text = request.form["text"]
-    results = check_gdpr_compliance(text)
+    text_input = request.form.get("text", "")
+    file = request.files.get("file")
+
+    file_text = ""
+
+    if file:
+        filename = file.filename.lower()
+        if filename.endswith(".txt"):
+            file_text = file.read().decode("utf-8", errors="ignore")
+        elif filename.endswith(".pdf"):
+            reader = PyPDF2.PdfReader(file)
+            for page in reader.pages:
+                file_text += page.extract_text()
+        elif filename.endswith(".csv"):
+            stream = io.StringIO(file.stream.read().decode("utf-8", errors="ignore"))
+            reader = csv.reader(stream)
+            for row in reader:
+                file_text += " ".join(row) + "\n"
+        else:
+            return "Unsupported file type. Please upload a .txt, .pdf, or .csv file."
+
+    combined_text = text_input + "\n" + file_text
+    results = check_gdpr_compliance(combined_text)
+
     output = "<h2>🔍 GDPR Compliance Report</h2><ul>"
     for article, status in results.items():
         output += f"<li><strong>{article}:</strong> {status}</li>"
