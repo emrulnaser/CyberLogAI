@@ -1,5 +1,5 @@
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 from policy import check_gdpr_compliance
 import PyPDF2
 import csv
@@ -10,13 +10,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def home():
-    return '''
-        <h1>🛡️ GDPR Scanner</h1>
-        <form method="post" action="/scan">
-            <textarea name="text" rows="10" cols="60" placeholder="Paste your policy text here..."></textarea><br>
-            <input type="submit" value="Scan GDPR Compliance">
-        </form>
-    '''
+    return render_template("index.html")
 
 @app.route("/scan", methods=["POST"])
 def scan():
@@ -25,14 +19,14 @@ def scan():
 
     file_text = ""
 
-    if file:
+    if file and file.filename:
         filename = file.filename.lower()
         if filename.endswith(".txt"):
             file_text = file.read().decode("utf-8", errors="ignore")
         elif filename.endswith(".pdf"):
             reader = PyPDF2.PdfReader(file)
             for page in reader.pages:
-                file_text += page.extract_text()
+                file_text += page.extract_text() or ""
         elif filename.endswith(".csv"):
             stream = io.StringIO(file.stream.read().decode("utf-8", errors="ignore"))
             reader = csv.reader(stream)
@@ -44,13 +38,7 @@ def scan():
     combined_text = text_input + "\n" + file_text
     results = check_gdpr_compliance(combined_text)
 
-    output = "<h2>🔍 GDPR Compliance Report</h2><ul>"
-    for article, status in results.items():
-        output += f"<li><strong>{article}:</strong> {status}</li>"
-    output += "</ul><a href='/'>⬅️ Back</a>"
-    return output
-
-import os
+    return render_template("index.html", results=results)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
