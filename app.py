@@ -1,31 +1,32 @@
 from flask import Flask, request, render_template
 from utils.scanner import scan_text
 import os
+from policy import check_gdpr_compliance
 
 app = Flask(__name__)
 
-# Create uploads folder if it doesn't exist
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+# You can add app.config for upload folder if you want:
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    results = None
-
+# Put your route here
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
     if request.method == 'POST':
         uploaded_file = request.files['file']
-        if uploaded_file and uploaded_file.filename.endswith('.txt'):
-            file_path = os.path.join(UPLOAD_FOLDER, uploaded_file.filename)
-            uploaded_file.save(file_path)
+        if uploaded_file:
+            # Extract text from uploaded file
+            text = scan_text(uploaded_file)
 
-            with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
+            # Run GDPR compliance check
+            gdpr_report = check_gdpr_compliance(text)
 
-            results = scan_text(content)
+            # Pass results to your HTML template
+            return render_template("result.html", report=gdpr_report)
+    return render_template("upload.html")
 
-    return render_template('index.html', results=results)
 
-import os
+# Other routes below...
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 10000))  # Render will set this
