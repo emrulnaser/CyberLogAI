@@ -1,4 +1,4 @@
-Fabsl-py==2.3.0
+absl-py==2.3.0
 accelerate==0.21.0
 addict==2.4.0
 aenum==3.1.16
@@ -95,7 +95,7 @@ numpy==1.26.2
 omegaconf==2.2.3
 onnx==1.18.0
 onnxruntime==1.22.0
-open-clip-torch==2.20.0
+git+https://github.com/openai/CLIP.git
 opencv-contrib-python==4.11.0.86
 opencv-python==4.11.0.86
 opencv-python-headless==4.11.0.86
@@ -110,7 +110,7 @@ platformdirs==4.3.8
 portalocker==3.2.0
 prettytable==3.16.0
 propcache==0.3.2
-protobuf>=4.25.3,<5
+protobuf==4.25.3
 psutil==5.9.5
 pycollada==0.9
 pycparser==2.22
