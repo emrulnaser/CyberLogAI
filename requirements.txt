@@ -19,7 +19,8 @@ cffi==1.17.1
 charset-normalizer==3.4.2
 clean-fid==0.1.35
 click==8.2.1
-clip @ https://github.com/openai/CLIP/archive/d50d76daa670286dd6cacf3bcd80b5e4823fc8e1.zip#sha256=b5842c25da441d6c581b53a5c60e0c2127ebafe0f746f8e15561a006c6c3be6a
+git+https://github.com/openai/CLIP.git
+
 colorama==0.4.6
 coloredlogs==15.0.1
 colorlog==6.9.0
