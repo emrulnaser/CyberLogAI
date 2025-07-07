@@ -300,27 +300,42 @@
                 <h2><i class="fas fa-clipboard-list"></i> Compliance Results</h2>
             </div>
             
-            {% if results['Compliance Score'] %}
+            {# --- FIX START --- #}
+            {# Check if 'Overall Compliance Summary' exists in results #}
+            {% if results['Overall Compliance Summary'] %}
             <div class="score-card">
-                <h3>Overall Compliance Score</h3>
-                <div class="score-value">{{ results['Compliance Score']['found'] }}</div>
-                <p>{{ results['Compliance Score']['status'] }} articles compliant</p>
+                <h3>Total Compliance Percentage</h3> {# Changed heading to explicitly state "Total Compliance Percentage" #}
+                <div class="score-value">{{ results['Overall Compliance Summary']['score_percentage'] }}</div> {# Displays the percentage, e.g., "42%" #}
+                <p>{{ results['Overall Compliance Summary']['compliant_articles'] }} compliant</p> {# Displays, e.g., "7/15 Articles compliant" #}
             </div>
             {% endif %}
-            
+
             <ul class="compliance-list">
+                {# Loop through each article, but skip the 'Overall Compliance Summary' item #}
                 {% for article, data in results.items() %}
-                    {% if article != 'Compliance Score' %}
+                    {% if article != 'Overall Compliance Summary' %}
                     <li class="compliance-item {% if '✅' in data.status %}compliant{% else %}non-compliant{% endif %}">
                         <div>
                             <h3>{{ article }}</h3>
-                            <p><small>Found: {{ data.found }}</small></p>
+                            <p><small>Found: 
+                                {# Corrected from data.found to data.found_terms as per Python output #}
+                                {% if data.found_terms %}
+                                    {{ data.found_terms }}
+                                {% else %}
+                                    No matching terms
+                                {% endif %}
+                                {# Added percentage for each individual article, if available #}
+                                {% if data.match_percentage %}
+                                    ({{ data.match_percentage }} of relevant keywords)
+                                {% endif %}
+                            </small></p>
                         </div>
                         <span class="status">{{ data.status }}</span>
                     </li>
                     {% endif %}
                 {% endfor %}
             </ul>
+            {# --- FIX END --- #}
             
             {% if scanned_text %}
             <div class="preview-section">
