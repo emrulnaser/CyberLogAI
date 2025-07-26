@@ -1,0 +1,31 @@
+Sample Privacy Policy - FinCloud Analytics
+Effective Date: 15 March 2025
+Company: FinCloud Analytics GmbH
+Website: www.fincloud.ai
+Contact: privacy@fincloud.ai | DPO: dpo@fincloud.ai
+1. Purpose and Scope
+This policy outlines how we process, store, and protect your personal data in accordance with the GDPR and applicable data protection laws.
+2. Data Categories Collected
+We collect personal data such as full name, email address, device identifiers, geolocation, browsing history, behavioral data, and financial account activity from users across our platforms.
+3. Lawful Basis
+We rely on user consent (Article 6(1)(a)), contractual necessity (Article 6(1)(b)), and legitimate interests (Article 6(1)(f)) for processing. We maintain records of each lawful basis used per processing activity.
+4. Special Categories
+We process special categories of data (e.g., financial health indicators, biometric data) only with explicit user consent as per Article 9.
+5. Children's Data
+We do not knowingly collect personal data from children under 16. Age verification is implemented during onboarding.
+6. Rights of Data Subjects
+We enable access, rectification, erasure, restriction, objection, and data portability via the User Dashboard or by email request.
+7. Profiling and Automated Decisions
+User profiles are created for credit scoring, with human review to mitigate fully automated decisions.
+8. Data Sharing
+We share personal data with affiliated processors in the EU, US (via SCCs), and Japan (adequacy status). Data Sharing Agreements are in place.
+9. Data Transfers
+Cross-border Transfers are conducted under SCCs and Binding Corporate Rules (BCRs).
+10. Security Measures
+FinCloud applies ISO/IEC 27001 controls, pseudonymization, continuous monitoring, and employee training.
+11. Data Retention
+Data is stored only as long as needed for the original processing purpose, with automatic deletion protocols.
+12. Data Breaches
+Data breaches are logged and reported to authorities and users per Articles 33 and 34.
+13. DPIAs
+We conduct Data Protection Impact Assessments (DPIAs) for any new AI-driven service or feature.

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDPR Scanner - Automated Privacy Compliance for Your Business</title>
+    <meta name="description" content="GDPR Scanner is an AI-powered web tool that automates GDPR compliance checks for privacy policies, consent, and cookies. Fast, transparent, and affordable self-auditing for startups, developers, and e-commerce.">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h3 {
+            font-size: 1.5em;
+            color: #007bff;
+            margin-top: 25px;
+        }
+        .tagline {
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .cta-button {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 15px auto; /* Adjusted margin-bottom to make space for the new button */
+            padding: 15px 30px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #218838;
+        }
+        .gdpr-check-button {
+            display: block;
+            width: fit-content;
+            margin: 15px auto 30px auto; /* Added margin-top and margin-bottom */
+            padding: 15px 30px;
+            background-color: #007bff; /* A distinct color, e.g., blue */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .gdpr-check-button:hover {
+            background-color: #0056b3;
+        }
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .feature-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1 1 calc(50% - 40px); /* Two columns, with gap */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .feature-item h4 {
+            color: #007bff;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+        .feature-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .feature-item ul li::before {
+            content: '✅ ';
+            color: #28a745;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-badge {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        .planned-feature li::before {
+            content: '🔜 ';
+            color: #ffc107; /* Orange for upcoming */
+        }
+        .monetization-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .monetization-table th, .monetization-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .monetization-table th {
+            background-color: #e9ecef;
+        }
+        .compliance-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .compliance-list ul li::before {
+            content: '🔒 ';
+            color: #0056b3;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .feature-item {
+                flex: 1 1 100%; /* Single column on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GDPR Scanner</h1>
+    <p class="tagline">Automated Privacy Compliance for Your Business. Fast. Transparent. Affordable.</p>
+
+    <!-- FIXED: Use different route -->
+    <a href="{{ url_for('full_report') }}" class="gdpr-check-button">Full GDPR Scan/Gap Report (Paid)</a>
+
+    <a href="{{ url_for('scan') }}" class="gdpr-check-button">GDPR Short Report/Free</a>
+    </header>
+
+    <section>
+        <h2>Project Summary</h2>
+        <p>In today's complex digital landscape, ensuring compliance with privacy regulations like GDPR is crucial yet challenging. The **GDPR Scanner** is a lightweight, AI-powered web tool designed to simplify this process.</p>
+        <p>It automates the assessment of your privacy policies, consent mechanisms, and cookie behaviors, checking for compliance with the EU GDPR, Google Consent Mode v2, and with future alignment planned for PIPEDA/Law 25 (Canada) and UK GDPR.</p>
+        <p>Our tool is built specifically for **startups, web developers, privacy consultants, and small eCommerce platforms** that need a fast, transparent, and affordable solution for GDPR self-auditing, without the need for expensive legal teams.</p>
+    </section>
+
+    <section>
+        <h2>How It Works: Core Functionalities</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h4>1. GDPR Article Compliance Checker</h4>
+                <p>Upload your privacy policy text, and our scanner goes to work:</p>
+                <ul>
+                    <li>Parses policy content to identify key GDPR elements.</li>
+                    <li>Detects compliance with critical articles:
+                        <ul>
+                            <li>Article 5 – Principles of processing</li>
+                            <li>Article 6 – Lawfulness of processing</li>
+                            <li>Article 7 – Conditions for consent</li>
+                            <li>Article 13 – Information & transparency</li>
+                            <li>Article 30 – Records of processing activities</li>
+                        </ul>
+                    </li>
+                    <li>Uses a robust section-wise keyword and regex logic.</li>
+                </ul>
+                <p><strong>Scoring Labels:</strong> ✅ Compliant, ⚠ Potentially Compliant, ❌ Requires Review</p>
+                <p><strong>Output Formats:</strong> JSON, Markdown, HTML (PDF export coming soon!)</p>
+            </div>
+            <div class="feature-item">
+                <h4>2. Consent Mode v2 Integration <span class="status-badge">WIP</span></h4>
+                <p>Align your analytics and advertising with user consent effectively:</p>
+                <ul>
+                    <li>Tracks Google’s Consent Mode v2 signals: <code>ad_storage</code>, <code>analytics_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>.</li>
+                    <li>Integrates seamlessly with Google Tag Manager (GTM) and popular Cookie CMPs like Cookiebot and Funding Choices.</li>
+                    <li>Scans for pre-consent cookie behavior to flag potential violations.</li>
+                </ul>
+            </div>
+            <div class="feature-item">
+                <h4>3. GDPR Gap Assessment Report <span class="status-badge">Planned</span></h4>
+                <p>Gain immediate insights into your compliance posture:</p>
+                <ul>
+                    <li>Color-coded compliance meter (Green/Yellow/Red) for each GDPR article.</li>
+                    <li>Quantified scores, e.g., “4/6 principles met under Article 5.”</li>
+                    <li>Exportable as PDF, HTML, and Markdown for easy sharing and record-keeping.</li>
+                </ul>
+            </div>
+            <div class="feature-item">
+                <h4>4. Cookie & Tracker Scanner <span class="status-badge">Upcoming</span></h4>
+                <p>Ensure your website respects user privacy from the ground up:</p>
+                <ul>
+                    <li>Uses regex logic to detect common tracking methods like <code>document.cookie</code>.</li>
+                    <li>Identifies Google and Facebook trackers.</li>
+                    <li>Flags scripts that load cookies before explicit user consent, aligning with ePrivacy and GDPR requirements.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>What's Next? Planned Additions</h2>
+        <ul class="feature-list planned-feature" style="display: block;">
+            <li>Recital-to-Article logic mapping for deeper insights.</li>
+            <li>Enhanced PDF report export with custom branding options.</li>
+            <li>NLP-powered plain-language explanations of compliance issues.</li>
+            <li>Intuitive Consent banner generator.</li>
+            <li>Personalized SaaS dashboard with user scan history.</li>
+            <li>Seamless Stripe/Gumroad integration for monetization.</li>
+            <li>Expansion to more region-based frameworks: 🇬🇧 UK-GDPR, 🇨🇦 PIPEDA/Law 25, 🇺🇸 CCPA.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Who Can Benefit? Our Target Users</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h4>Freelancers & Agencies</h4>
+                <p>Conduct quick pre-audit checks for client projects, ensuring a strong privacy foundation from the start.</p>
+            </div>
+            <div class="feature-item">
+                <h4>SaaS Startups</h4>
+                <p>Automate compliance checks, allowing you to focus on product development while staying legally sound.</p>
+            </div>
+            <div class="feature-item">
+                <h4>Web Developers</h4>
+                <p>Gain clear visibility into cookie and tracking behaviors on your sites, simplifying privacy-conscious development.</p>
+            </div>
+            <div class="feature-item">
+                <h4>GDPR Consultants</h4>
+                <p>Generate professional, exportable client reports quickly, enhancing your service offerings.</p>
+            </div>
+            <div class="feature-item">
+                <h4>EU/UK/CA Businesses</h4>
+                <p>Obtain article-wise visibility into your compliance status, making internal audits straightforward and efficient.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Monetization Model: Freemium SaaS</h2>
+        <p>Our goal is to make compliance accessible. We offer a flexible freemium model:</p>
+        <table class="monetization-table">
+            <thead>
+                <tr>
+                    <th>Tier</th>
+                    <th>Features</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Free</strong></td>
+                    <td>1–2 scans/day, Markdown + JSON export.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pro</strong></td>
+                    <td>PDF/CSV export, scan history, priority email support.</td>
+                </tr>
+                <tr>
+                    <td><strong>Enterprise</strong></td>
+                    <td>API access, white-labeled scanner, comprehensive audit packs.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Billing Options:</strong> Stripe or Gumroad (monthly/yearly subscriptions) and fixed-rate audit services (€49/report).</p>
+    </section>
+
+    <section>
+        <h2>International Expansion Plan</h2>
+        <p>We're building a truly global privacy compliance solution:</p>
+        <ul class="feature-list compliance-list" style="display: block;">
+            <li><strong>✅ GDPR (EU-wide)</strong> - Current focus and strong alignment.</li>
+            <li><strong>✅ UK-GDPR</strong> - Covered by current GDPR alignment.</li>
+            <li><strong>🔜 PIPEDA + Law 25 (Canada)</strong> - Next in line for dedicated support.</li>
+            <li><strong>🔜 CCPA (USA)</strong> - Planned for a later phase of expansion.</li>
+        </ul>
+        <p>With active assistance from our network in Canada 🇨🇦 and the UK 🇬🇧 for market feedback and user testing, the GDPR Scanner is actively expanding its global privacy compliance support.</p>
+    </section>
+
+    <section>
+        <h2>Compliance Alignment</h2>
+        <p>Our core logic is rigorously aligned with:</p>
+        <ul class="compliance-list">
+            <li>GDPR Articles 5, 6, 7, 13, 30.</li>
+            <li>Consent logic specifically aligns with Google Consent Mode v2 and the Digital Markets Act (DMA).</li>
+        </ul>
+        <p>Future enhancements will also consider alignment with ISO 27001 (via security suggestions) and SOC 2 (if offered as a B2B SaaS).</p>
+    </section>
+
+    <section>
+        <h2>Status & Next Milestones</h2>
+        <p>We are currently in Beta, with core modules live and continuous enhancements in progress. Here's our roadmap:</p>
+        <ul class="feature-list" style="display: block;">
+            <li><strong>PDF Export:</strong> ✅ Priority - Nearing completion.</li>
+            <li><strong>Cookie Scanner Regex:</strong> ✅ In progress - Actively being developed.</li>
+            <li><strong>Landing Page UI:</strong> ✅ Optional help available - Continuously improving user experience.</li>
+            <li><strong>Freemium Tier:</strong> ⏳ After feedback - Preparing for monetization.</li>
+            <li><strong>Canada/UK Scanner Versions:</strong> ⏳ Aug–Sept 2025 - Expanding regulatory scope.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Developed by Emrul Naser (Bangladesh)</p>
+        <p>Visit us at: <a href="https://esecurity.ovh">esecurity.ovh</a></p>
+        <p>&copy; 2025 GDPR Scanner. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
